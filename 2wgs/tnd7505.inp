@@ -1,0 +1,21 @@
+Test case for comparison with the wind tunnel investigation reported 
+in NASA TN D-7505, "Effect of Canard Location and Size on Canard-Wing
+Interference...." by Blair Gloss, NASA Langley Research Center
+This case is with the canard OFF.
+All dimensions are in cm.
+Note that we are trying to match the wind tunnel Reynolds number
+of xxxxxx  for skin friction calculations. Since cbar=23.31, the
+value of rnl is xxxxxx/23.31
+ 
+NASA TN D-7505 CONFIG BW1 60deg WING, CANARD OFF
+ &BODY  bcode=0, oc=3,
+        lnose=14, lbody=96.52, ltail=0, radius=3.81, 
+        xstart=47.65, nrows=8, nb=3,
+        refmom=59.14, cbar=23.31, sref=1032.2,
+        rnl=98000,
+        mach=1.6, /
+   
+ &WING  rootle=47.65, rootte=77.45, rooty=3.81,
+        tiple=85.04,  tipte= 91.81, tipy=25.4,
+        tcroot=0.06, tctip=0.04, /
+

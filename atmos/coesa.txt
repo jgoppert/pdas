@@ -1,0 +1,65 @@
+             DEFINITION OF THE 1976 STANDARD ATMOSPHERE
+
+The equations used are those adopted 15 October 1976 by the
+United States Committee on Extension to the Standard Atmosphere (COESA),
+representing 29 U.S. scientific and engineering organizations.
+The values selected in 1976 are slight modifications of those adopted
+in 1962. The equations and parameters used are documented in a book
+entitled "U.S. Standard Atmosphere, 1976" published by the
+U.S. Government Printing Office, Washington, D.C.
+
+The fundamental 7 layers of the atmosphere and the temperature
+gradient in each is given by the following table
+
+    H(lower)   H(upper)   dT/dH      ( H is geopotential altitude )
+       0          11      -6.5
+      11          20       0.0
+      20          32       1.0
+      32          47       2.8
+      47          51       0.0
+      51          71      -2.8
+      71       84.852     -2.0      (84.852km geopotential=86km geometric)
+
+
+These values plus the sea-level temperature of 288.15 kelvin and the
+sea-level pressure of 101325 Newtons/sq.m. complete the definition. The
+sea-level density becomes a derived quantity of 1.225 kg/cu.meter by use
+of the perfect gas equation. It is quite straightforward to derive the 
+temperatures at the boundaries from the value at sea level and the defined 
+gradients. These turn out to be 288.15, 216.65, 216.65, 228.65, 270.65, 
+270.65, 214.65, 186.946. The pressures at the boundaries (non-dimensionalized 
+by the sea-level pressure) turn out to be 1.0, 2.233611E-1, 5.403295E-2, 
+8.5666784E-3, 1.0945601E-3, 6.6063531E-4, 3.9046834E-5, 3.68501E-6. These 
+are derived from the hydrostatic equation:
+
+    delta=delta(base)*Exp(-GMR*deltah/tbase)          if tgrad=0
+
+    delta=delta(base)*(tbase/tlocal)**(GMR/tgrad)     if tgrad<>0
+
+where tbase and delta(base) are the temperature and pressure at the
+base of a layer. deltah is the altitude minus the base altitude, tlocal
+the temperature at this altitude and GMR=34.163195, the gas constant.
+See the reference publication for more details. These values of pressure
+at the boundaries are not printed in the reference, and I have included
+the program called press.pas that I used to compute very accurate values
+of these numbers.
+This program produces the following results:
+
+Executing C:\ATMOS\PRESS.EXE
+Press - compute pressure at layer boundaries (1976 std)
+Ralph L. Carmichael, Public Domain Aeronautical Software
+Version 1.1 (3Nov95)
+Hydrostatic constant =      34.163194736310
+
+ km      temp           pressure            density
+  0   288.15000     1.0000000000000     1.0000000000000
+ 11   216.65000     0.2233611050922     0.2970759401445
+ 20   216.65000     0.0540329501078     0.0718651953546
+ 32   228.65000     0.0085666783593     0.0107959255160
+ 47   270.65000     0.0010945601338     0.0011653334659
+ 51   270.65000     0.0006606353133     0.0007033514337
+ 71   214.65000     0.0000390468337     0.0000524171681
+ 85   186.94600     0.0000036850095     0.0000056799049
+Normal termination of press, version 1.1 (3Nov95)
+
+These values were coded with the tables in Atmosphere.

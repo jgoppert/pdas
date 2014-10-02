@@ -1,0 +1,108 @@
+ARC-11398
+PANAIR- PREDICTING SUBSONIC OR SUPERSONIC LINEAR POTENTIAL FLOWS
+ABOUT ARBITRARY CONFIGURATIONS USING A HIGHER
+ORDER PANEL METHOD (CDC VERSION)
+
+PANAIR (an abbreviation for "panel aerodynamics") is a state-of-the-art
+system of computer programs developed to predict inviscid subsonic and
+supersonic flows about an arbitrary configuration by means of a higher
+order panel method.  Generally speaking, a panel method solves a linear
+partial differential equation numerically by approximating the
+configuration surface by a set of panels on which unknown "singularity
+strengths" are defined, imposing boundary conditions at a discrete set
+of points, and thereby generating a system of linear equations relating
+the unknown singularity strengths.  These equations are solved for the
+singularity strengths which provide information on the properties of
+the flow.  PANAIR differs from earlier panel methods by employing a
+"higher order" panel method; that is, the singularity strengths are not
+constant on each panel.  This is necessitated by the more stringent
+requirements of supersonic problem. The potential for numerical error
+is greatly reduced in the PANAIR program by requiring the singularity
+strength to be continuous.  It is also this "higher order" attribute
+which allows PANAIR to be used to analyze flow about arbitrary
+configurations.  PANAIR can handle the simple configurations considered
+in the preliminary design phase and later serve as the "analytical
+wind tunnel" which can analyze the flow about the final detailed,
+complex configurations.
+
+The PANAIR system includes the following capabilities: the ability to
+handle, within the limitations of linear potential flow theory,
+completely arbitrary configurations, using either exact or linearized
+boundary conditions; the ability to handle asymmetric configurations
+as well as those with one or two planes of symmetry; the ability to
+handle symmetric configurations in either symmetric or asymmetric flow;
+the ability to superimpose an incremental velocity on the freestream,
+either locally or globally, in order to simulate effects such as a
+rotational motion, differing angles of attack for different portions of
+a configuration, or a propeller slipstream; the ability to calculate
+pressures, forces, and moments using a variety of pressure formulas
+(such as isentropic, linear, etc.), including the forces and moments
+due to flow through the surface; the ability to calculate leading edge
+and side edge thrust forces and moments for thin configurations; and
+the ability to perform the non-iterative design of a configuration, a
+process in which a desired pressure or tangential velocity distribution
+is specified and PANAIR determines the "residual" normal flow through
+the surface required to obtain the desired distribution.
+
+The PANAIR code was designed with ease of use foremost in mind.  Most
+problems can be modeled with a minimum of user input.  In general,
+the aircraft surface is partitioned into several networks of surface
+grid points, such as a forebody network, a wing network, and so forth.
+The coordinates of the input grid points must be computed and entered
+by the user; PANAIR does not generate grid point coordinates.
+PANAIR connects the grid points in each network with piecewise flat
+panels.  The user also supplies information concerning the free-stream
+onset flow, the angle of attack, and the angle of sideslip.  Numerous
+flow quantities are computed at points on the vehicle surface and at
+points in space.  These include pressure coefficients, total and
+perturbation values of velocity and mass flux components, total and
+perturbation potential, local Mach number, and vacuum pressure
+coefficient.  The pressure coefficients on individual panels are
+fitted with two-dimensional quadratic splines and integrated to obtain
+the six components of force and the moment coefficients.  These
+coefficients may be output for each panel, for columns of panels, for
+each network, or for any combination of networks.  The user has
+extensive control over the type and quantity of data that is output
+during a PANAIR analysis.
+
+The PANAIR system includes advanced software technology as well as
+advanced engineering technology.  It has been developed in accordance
+with the Systematic Software Development Methodology, an approach that
+emphasizes modular, structured software.  The separate "modules" of
+the PANAIR system communicate with each other only through a "data base"
+of information residing on disk storage.  A module execution control
+system and data management system ensure that the PANAIR modules
+execute and communicate in the proper manner.  This software design
+lends itself to easy maintenance since changes in one module affect
+the other modules in a clearly identifiable manner.
+
+The PANAIR program product is available by license for a period of 10
+years to approved licensees.  The licensed program product delivered
+includes one complete set of supporting documentation; however,
+additional copies of the documentation may be purchased separately
+at any time according to the price schedule shown.
+The CDC version of the PANAIR system is written in FORTRAN IV and
+ASSEMBLER for batch execution and has been successfully installed
+and executed in the following environments: CDC CYBER 175 under
+NOS 1.3 and NOS 1.4, CDC 7600 under SCOPE 2.1.3 and SCOPE 2.1.4,
+and CDC CYBER 750, 760 under NOS/BE.  The largest program "module"
+in the PANAIR system has a central memory requirement of approximately
+145K (octal) of 60 bit words.  The CRAY version of the PANAIR system
+is written in FORTRAN and ASSEMBLER for the CRAY 1-S, 1-M, and X-MP,
+operating under COS.  The CDC version of the PANAIR system was
+developed in 1980.  The CRAY version was last updated in 1987.
+
+COSMIC, and the COSMIC logo are registered trademarks of the 
+National Aeronautics and Space Administration. All other brands and 
+product names are the trademarks of their respective holders.
+
+LANGUAGE: FORTRAN IV(99%),  ASSEMBLER(1%)
+
+MACHINE REQUIREMENTS: CDC CYBER 170 Series
+
+PROGRAM SIZE: Approximately 288957 source statements
+
+DISTRIBUTION MEDIA: 9 Track 1600 BPI CDC System Internal Format Magnetic Tape
+
+DOMESTIC - DOCUMENTATION PRICE $303.00 PROGRAM LICENSE $1500.00
+(Program Available By License Agreement Only)

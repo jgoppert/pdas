@@ -1,0 +1,61 @@
+$title
+perturbation potential kt test cases (run with a502h) 
+tamigniaux 865-6148 7k-04 
+$solution 
+$symmetry - xz plane of symmetry
+=misymm   mjsymm
+1.        0.
+$mach number
+=amach
+.6
+$cases - no. of solutions
+=nacase
+2.
+$angles-of-attack
+=alpc
+0.
+=alpha(1) alpha(2)  alpha(3)
+4.        0.
+$printout options
+=isings   igeomp    isingp    icontp    ibconp    iedgep
+5.        1.        0.        0.        1.        0.
+=ipraic   nexdgn    ioutpr    ifmcpr
+.0        .0        1.        0.
+$references for accumulated forces and moments
+=xref     yref      zref      nref
+0.        0.        0.        1.
+=sref     bref      cref      dref
+9.        3.        3.        3.
+$points 
+=kn 
+1.
+=kt
+5.
+=nm       nn                                                          netname
+4.        4.                                                          kt5 
+=x(1,1)   y(1,1)    z(1,1)    x(*,*)    y(*,*)    z(*,*)
+0.0       0.         0.       0.0       1.        0.0 
+0.0       2.        0.0       0.0       3.        0.0 
+0.0       0.        1.0       0.0       1.        1.0 
+0.0       2.        1.0       0.0       3.        1.0 
+0.0       0.        2.0       0.0       1.        2.0 
+0.0       2.        2.0       0.0       3.        2.0 
+0.0       0.        3.0       0.0       1.        3.0 
+0.0       2.        3.0       0.0       3.        3.0 
+$points 
+=kn 
+1.
+=kt
+21. 
+=nm       nn                                                          netname
+4.        4.                                                          kt21
+=x(1,1)   y(1,1)    z(1,1)    x(*,*)    y(*,*)    z(*,*)
+0.0       0.        210.      1.0       0.        210.
+2.0       0.        210.      3.0       0.        210.
+0.0       1.        210.      1.0       1.        210.
+2.0       1.        210.      3.0       1.        210.
+0.0       2.        210.      1.0       2.        210.
+2.0       2.        210.      3.0       2.        210.
+0.0       3.        210.      1.0       3.        210.
+2.0       3.        210.      3.0       3.        210.
+$end of a502 inputs

@@ -1,0 +1,14 @@
+(f7.0,2f10.4,2f14.5,/,4f14.5,/,4f14.5)
+$title velocity kt test cases (run with a502h)                                 
+$title tamigniaux 865-6148 7k-04                                               
+$      force and moment summary
+formoms
+ sol-no     alpha      beta            cl           cdi  more
+            cy            fx            fy            fz  more
+            mx            my            mz            area
+      1    4.0000    0.0000       0.00000       0.00000
+       0.00000       0.00000       0.00000       0.00000
+       0.00000       0.00000       0.00000         0.00000
+      2    0.0000    0.0000       0.00000       0.00000
+       0.00000       0.00000       0.00000       0.00000
+       0.00000       0.00000       0.00000         0.00000

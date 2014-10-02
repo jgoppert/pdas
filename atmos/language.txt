@@ -1,0 +1,102 @@
+COMPARISON OF PROGRAMMING LANGUAGES USED FOR ATMOSPHERE ROUTINES
+
+Different people use different languages for computation.
+At Public Domain Aeronautical Software, we have no intention of
+telling you that one language is better than another. Each person
+must choose the best way to get done whatever work needs to be done.
+So, I have supplied the atmosphere program in several popular
+programming languages. If I haven't chosen your favorite language,
+send me a message and I might get it in a later version.
+Better yet, send me a translated version that you want to share.
+
+The original version of this program was based on a subroutine
+called AT62, that originated (I think) at Wright Patterson.
+AT62 was incorporated in numerous aeronautical programs and I have
+put a copy of it on the disc for historical reference.
+Around 1980, I coded a subroutine that returned non-dimensional values 
+of temperature, pressure, and density and that used the coding style 
+of the recently released 1977 version of the Fortran programming 
+language. That routine, called ATMOS, was used in a number of airplane 
+studies. In later years, I have found it necessary or useful to rewrite 
+this program in other languages, such as Pascal, Delphi, C, Basic, and 
+C++ as well as updating to the 1990 version of Fortran.
+
+I find it interesting that the algebraic equations used to compute the
+atmospheric properties are rather similar among the different
+programming languages, but the coding required to make a neatly
+formatted table with some items in fixed format and others in
+exponential format is quite different.
+
+In all languages, the routine Atmosphere (or SimpleAtmosphere) has
+four arguments. The first, altitude in km, is input and is not changed.
+The next three, pressure, temperature and density, are output from
+the routine. Among the languages, there are differences in the way this
+is coded. In Fortran 77, QBasic and Visual Basic, the four arguments
+are coded the same.
+You cannot look at the Subroutine statement and tell if the
+variables are coming in, going out or both. This makes it easy on the
+coder, but hard on anyone picking it up unless it is well commented
+or documented. In Pascal, Delphi, C, and C++, it is easy to see that the
+first argument is input and will not be changed, because of the
+keyword const that preceeds it. You also see this in Fortran 90 because
+the variable has an INTENT(IN) modifier. In Pascal, you see that the
+three atmosphere variables are to be modified by the VAR keyword
+preceding the variable. In C++, this is signified by the ampersand
+following the variable name, thereby identifying it as a reference.
+C is truly different; the arguments to a C function cannot be changed
+by the function. This is not a problem, because the standard way this
+is done is to pass a pointer to the variable, rather than the variable
+itself. You see this from the asterisk following the type declaration
+and before the variable name. In the subroutine we always use a * symbol
+before the pointer to indicate that the operation is to be performed on
+the data being pointed TO, not on the pointer itself. For example, the final
+statement computing density is written *sigma = *delta / *theta  rather
+that sigma=delta/theta as it would be done in all other languages.
+In the calling program in C, you must be sure to send the address of
+the variable rather than the value of the variable. This is done by
+preceding the variable name with an ampersand. You don't use ampersands
+in the call when you use C++, because the arguments are references. The 
+Fortran 90 subroutine indicates that the last three variables are to be 
+output with the INTENT(OUT) modifier. Actually, Fortran 90 is the only 
+language that points out explicitly that the subroutine has no interest 
+in what the value of the variable was before entering the routine. 
+In fact, if you should try to use the previous value, you will be flagged 
+for an error. Use INTENT(IN OUT) if you want to do that.
+
+Other differences may be seen in the way a real number is raised to
+a real power and that C and C++ index the tables from 0 to 7 while
+the other languages number them 1 to 8. All the languages except
+Fortran 77 have global variables, so the constants may be defined only once.
+
+The way one writes a line of output with the variables neatly formatted
+with specified width and precision varies considerably among languages.
+There is not much to say about the differences except that you can
+compare them if you are interested.
+There is no formatting convention in Pascal that gives controlled
+exponential format, such as the E-format of Fortran. A procedure called
+EStr is included that performs this function.
+In Delphi, there is a procedure called FloatToStrF that performs
+this function.
+
+C, C++ and BASIC don't seem to be able to print one digit in the
+exponent field, as may be done in Fortran or Pascal.
+Fortran77 requires you to save up all the results and write them with
+one output statement. Other languages allow you to write the line a
+little at a time and then explicitly add the newline indicator.
+The new ES format specifier in Fortran 90 makes it easy to print in
+scientific notation without resorting to the error-prone technique of
+using 1P in the format statement.
+
+Delphi and Visual Basic are languages that are designed to run with
+Microsoft Windows. The Delphi program is a console application that may 
+be run from a DOS window under Microsoft Windows. It is also a valid
+Turbo Pascal program for execution in DOS. 
+I have made a very simple form with two buttons - one
+to create the files and another to quit. The program tables in all the
+other languages is meant to be run from a DOS command line.
+
+Added note : Also check the program tables76.f90. Here, we forget about
+counting spaces and using monospaced fonts. This program writes an HTML
+file with tables and your web browser takes care of making it all look
+neat. Maybe this is the future.
+

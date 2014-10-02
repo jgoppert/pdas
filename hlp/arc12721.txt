@@ -1,0 +1,52 @@
+ARC-12721
+SILHOUETTE - HIDDEN LINE COMPUTER CODE WITH GENERALIZED SILHOUETTE SOLUTION
+
+Flexibility in choosing how to display computer-generated three-dimensional
+drawings has become increasingly important in recent years.  A major
+consideration is the enhancement of the realism and aesthetics of the
+presentation.  A polygonal representation of objects, even with hidden
+lines removed, is not always desirable.  A more pleasing pictorial
+representation often can be achieved by removing some of the remaining
+visible lines, thus creating silhouettes (or outlines) of selected
+surfaces of the object.  Additionally, it should be noted that this
+silhouette feature allows warped polygons.  This means that any polygon
+can be decomposed into constituent triangles.  Considering these triangles
+as members of the same family will present a polygon with no interior
+lines, and thus removes the restriction of flat polygons.
+
+SILHOUETTE is a program for calligraphic drawings that can render any
+subset of polygons as a silhouette with respect to itself.  The program
+is flexible enough to be applicable to every class of object. SILHOUETTE
+offers all possible combinations of silhouette and nonsilhouette
+specifications for an arbitrary solid. Thus, it is possible to enhance
+the clarity of any three-dimensional scene presented in two dimensions.
+Input to the program can be line segments or polygons.  Polygons designated
+with the same number will be drawn as a silhouette of those polygons.
+
+SILHOUETTE is written in FORTRAN 77 and requires a graphics package
+such as DI-3000.  The program has been implemented on a DEC VAX series
+computer running VMS and used 65K of virtual memory without a
+graphics package linked in.  The source code is intended to be
+machine independent.  This program is available on a 5.25 inch 360K
+MS-DOS format diskette (standard distribution) and is also available
+on a 9-track 1600 BPI ASCII CARD IMAGE magnetic tape.
+SILHOUETTE was developed in 1986 and was last updated in 1992.
+
+COSMIC, and the COSMIC logo are registered trademarks of the
+National Aeronautics and Space Administration. All other brands and 
+product names are the trademarks of their respective holders.
+
+LANGUAGE: FORTRAN 77
+
+MACHINE REQUIREMENTS: Machine Independent
+
+PROGRAM SIZE: Approximately 2124 source statements
+
+DISTRIBUTION MEDIA: 5.25 Inch IBM PC DOS Format Diskette
+
+PROGRAM NUMBER : ARC-12721
+
+DOMESTIC - DOCUMENTATION PRICE $17.00  PROGRAM PRICE $450.00
+
+INTERNATIONAL - DOCUMENTATION PRICE $34.00  PROGRAM PRICE $900.00
+

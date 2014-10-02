@@ -1,0 +1,272 @@
+
+
+INPUT GUIDE FOR PROGRAM PANIN                                \panin\input.txt
+
+A Program for Preparing Input Files for PanAir (A502)
+by Ralph L. Carmichael
+
+Introduction
+
+The program referred to as A502 is a pilot version of the production
+computer code known as PANAIR. 
+Both PANAIR and A502 were developed
+by the Boeing Company under contract to the NASA Ames Research
+Center. These programs solve for the fluid flow about an arbitrary
+configuration at subsonic or supersonic speeds, using linearized
+potential flow theory.
+The A502 code was never intended for wide distribution and
+only modest efforts were made to document the input file format
+and explain the usage of the program. Recent developments have led
+to the more widespread use of A502 and the program must become
+available to a greater number of users. 
+The purpose of this paper
+and the computer program it describes is to make the A502 version
+of PanAir accessable to a users in a simple fashion.
+
+A502 Input Format
+The input to A502 is described in Reference 1. The input data is
+organized in specific columns. Editing an input file is a rather
+error-prone process. The PANIN program was written to enable a
+user to select the flow properties and all other program options by
+editing a short free-format file called an auxiliary file. One entry
+in the auxiliary file is the name of a file that contains the
+geometrical information. The format of this file is that of the NASA
+standard for wireframe geometry as described in reference 2.
+This file is usually referred to as a WGS
+file, standing for Wireframe Geometry Standard. The program
+reads the various items of control information from the auxiliary
+file and combines this information with the panel geometry in the
+WGS file to produce a combined file that is a properly formatted
+input file for PanAir.
+
+Preparing the WGS File
+The first and most difficult part of preparing a case for PANAIR or
+any panel code is the definition of the surface geometry as a set of
+quadrilateral panels. A variety of techniques exist for the creation
+of this data. A program call MAKEWGS in this collection is available
+for definition of simple geometries.
+Those familiar with the
+geometry programs in use at Langley may find it preferable to use
+QUICK or GEMPAK to produce inputs. 
+The ultimate solution lies in the use of a Computer-Aided-Design (CAD)
+system that has a wireframe output option.
+There is a program A502WGS that will convert A502 input decks to WGS.
+
+
+
+The PanIn command file
+All input to PanAir other than the geometry definition or off-body
+xyz-points is contained in the
+auxiliary file.    **** REWRITE THAT ****
+
+
+Each records in the auxiliary file starts with a key word.
+The key word may be upper or lower case and may be preceeded by blanks.
+The key word is usually followed on the same record
+with a numeric value which is the value of the variable described by
+the key word.
+For some key words, a series of numerical values follows while for
+others no values are required.
+Comments may be added to a record after the necessary data.
+Comments may be added after the numeric value for most of the keywords.
+
+
+
+Currently the keywords are:
+ABUTPR 
+ALPC    compressibility angle of attack, degrees
+ALPHA   list of angles of attack  (degrees) (max of 4) 
+AVERAGE if any networks are modelled as thin surfaces they are 
+        listed on this record
+BETA    list of angles of sideslip (degrees) (max of 4)
+BETC    compressibility angle of sideslip 
+BOUN    the boundary conditions to be applied to each network. 
+        This will be a list of KT values, one for each network. 
+        However, if any network has KT=30, the number 30 must be followed 
+        by 4 additional boundary condition inputs. A value of -18 is used for
+        the special case of fuselage base wake, or wakes that abut other wakes.
+
+BWAKE   followed by 3 numbers to define a body edge wake network.
+        This is also used for wakes attached to upstream wakes.
+        The first is the network to which the wake is attached; the second is the 
+        edge number to which it is attached; third is the x-coor of downstream edge. 
+CBAR    length of the reference chord 
+CHECK   =0 for a full run; =1 to stop after computing abutments. 
+CUTS    name of a file that has a list of plane definitions
+        each record has 6 numbers, 3 for point, 3 for normal
+EAT     abutment tolerance 
+FORCE   list of networks to be used for calculation of configuration
+        force and moment summary. If this record is not present, the
+        default is to use all thnetworks that have kt=1 boundary conditions.
+GRID    definition of an off-body grid. There must be 9 numbers 
+        following the keyword GRID and they must be on the same record. 
+        The nine items are (xorigin, yorigin, zorigin), (dx,dy,dz), and 
+        (nx,ny,nz). 
+HMIN    min step size for streamlines 
+HMAX    max step size for streamlines 
+ISINGS  =1 to print singularity data; =0 to suppress 
+IGEOIN  =0 to print network geometry before liberalized abutment mods 
+        =-1 to suppress this printout
+IGEOUT  =0 to NOT print network geometry after liberalized abutment mods 
+        =1 to print this information
+IGEOMP  =1 to print geometry diagnostic data; =0 to suppress 
+ISINGP  =1 to print singularity spline data; =0 to suppress 
+ICONTP  =1 to print control point loc, normals; =0 to suppress 
+        =2 to print upper surface normal only
+IBCONP  =1 to print boundary condition diagnostic data; =0 to suppress 
+IEDGEP  =1 to print edge-matching diagnostic data; =0 to suppress 
+IPRAIC  =1 to print control point sequence number; =0 to suppress 
+IOUTPR  =-1 to omit flow parameter output
+        =0  to output 48 flow parameters
+        =1  to output 12 flow parameters
+IFMCPR  =-1 to omit network force and moment output
+        =0  to output network force,moment summary per col, per net, accum
+        =1  to output network force,moment summary per net and accumulation
+IGNORE  if any networks are not to be included in the force and moment 
+        calculations, they are listed on this record. 
+IVCORR  =1 to apply the McLean velocity correction 
+        =2 to apply the Boctor velocity correction 
+        =0 to make no corrections
+MACH    free stream Mach Number  
+MAXSTREAM       maximum number of points along any single streamline (default 100)
+MNSWITCH        (may also be spelled MNSWCH) any networks that should have rows
+                and columns interchanged are listed on this record
+NEXDGN  =1 to print edge control point data; =0 to suppress 
+NOF     do not add trailing filaments for Trefftz plane drag analysis
+OFFNETS list of networks used for calculation of off-body velocities or 
+        streamlines. Default is to use all networks. 
+
+PEA     [not implemented yet]
+
+PRECISION       number of decimals printed in all fields of the a502 input
+        file produced by this program.
+RESTART if the job has been run previously with a SAVE and there are 
+        files on the CSF archive, the job may be restarted without 
+        recomputation of the aerodynamic matrix.
+        =1 if additional angles of attack or sideslip are to be done 
+        =2 if the same angles are used 
+SPAN    reference span 
+SREF    reference area 
+STREAM  name of a file that has a list of (x,y,z) (dx,dy,dz) triples
+        six numbers per record
+SYMM    =0 for asymmetric configuration; =1 for symmetric 
+TITLE1  a title that appears on the printed output 
+TITLE2  second line of the title 
+UPSTREAM        streamlines go upstream instead of downstream.
+WAKE    followed by 3 numbers to define a trailing edge wake network.
+        The first is the network to which the wake is attached; the second is the 
+        edge number to which it is attached; third is the x-coor of downstream edge. 
+WGS     name of the WGS file 
+XREF    x-coordinate of the moment reference point 
+XYZ     name of a file which has a list of (x,y,z) triples, defining the 
+        off-body points at which velocities are to be computed. 
+        one triple per record. 
+YREF    y-coordinate of the moment reference point 
+ZREF    z-coordinate of the moment reference point 
+        no changes in angles or Mach number, this commands a restart. 
+        The principal use is for off-body points. 
+
+
+Default Values
+In order to make the creation of this auxiliary file as simple as
+possible, all of the keywords have preset defaults which are used if
+the user does not supply a value. For many of the items, the default
+value will be the desired value and the auxiliary file can be quite
+short. The following items all have default values of 0: MACH, XREF,
+YREF, ZREF, ALPC, BETC, ALPHA, BETA, ISINGS, IGEOMP, ISINGP, ICONTP,
+IBCONT, IEDGEP, IPRAIC, NEXDGN, IOUTPR, IFMCPR, IVCORR, IGEOIN, IGEOUT,
+CHECK. The quantities SREF, CBAR, SPAN, and SYMM have default values of
+1.0 and MAXSTREAM has a default value of 100.
+HMIN defaults to 0.1 anf HMAX to 0.5.
+TIME has a default value of 100 and NAME is given the string
+"A502". The keywords MNSWITCH, FORCE, IGNORE, and AVERAGE refer to
+lists of network numbers. If any of these are not specified, the list
+is taken to have no members. If XYZ or STREAM is not included in the
+auxiliary file, then no off-body points or streamlines will be
+computed.
+
+
+
+Putting It All Together
+Once the WGS geometry file and the auxiliary file have been created
+and stored, the PanAir input file is created by invoking the program
+panin.
+
+After the panin program has completed execution, two files 
+have been produced. These files take their names from the data in the
+NAME record in the auxiliary file with extensions of .sh and .in.
+For example, if the record in the auxiliary file is NAME mycase, then
+the two files produced are mycase.in and mycase.sh.
+The .in file is the a502 input data.
+
+An Example
+The dataset shown here is a sample case
+
+NAME owra45
+TIME 550
+WGS owra45b.wgs    ( version with modified nose )
+TITLE1 Oblique Wing Research Airplane    Ames 86 concept (250 sq. ft)
+TITLE2  Sweep=45
+CHECK 0
+symm 0             ( no symmetry )
+ioutpr -1          ( do not print surface pressures )
+ifmcpr 1           ( short print )
+cbar 5.34
+span 50
+sref 250           ( small wing; new one has 300 )
+xref 37.292
+mach 0.9
+alpc 5             ( average value for alpha values )
+alpha 4 5 6
+eat  0.0001
+ignore 7 8 9 10
+average 23 24 25 26 27 31 32
+BOUN
+1 1 1 1 1 1
+5 5 5 5
+1 1 1 1 1 1
+18 18 18 18 18 18
+2 2
+2 2 2
+18 18 18
+2 2
+18 18 18 18 18 18 18 18
+
+This job expects to find a file called owra45b.wgs in the current 
+directory.
+The wgs file should contain 40 networks.
+Networks 7-10 are base nets and 17-22, 28-30, and 33-40 are trailing edge
+wake nets.
+Nets 23-27 and 31-32 are surfaces of zero thickness and their forces
+and moments are computed from the delta-Cp across the panel.
+Two files named owra45.sh and owra45.in will be produced in the current
+directory.
+
+
+Disclaimer
+Although a considerable effort has been expended in making the program
+free of errors or ommisions, the user should inspect the input
+file and script carefully. There are many problems in forcing data to fit
+the fixed field format and inadvertent roundoff may result. The PRECISION
+keyword can be helpful, but there are many potential sources of error.
+The principal problem area is overflow of an output field when one is
+trying to keep the geometric accuracy high by printing many decimals.
+Two popular places for this error to occur are the x-coordinates of the
+trailing edges of wakes and the value of reference area.
+It is usually useful to scan the PanAir input file for asterisk characters.
+
+There are many options in the PanAir input file and it would be virtually
+immpossible to incorporate all of them in this program. For example, in
+PanAir you can select different reference lengths for yawing momemt
+and rolling moment. PanIn simply asks for SPAN. And there are lots more.
+
+
+References
+
+1. Saaris, Gary A., "A502F User's Guide -- PAN AIR Technology
+Program for Solving Problems of Potential Flow about Arbitrary Configurations,"  
+Boeing Document D6-53818, June 1988 (Rev A).
+
+2. Craidon, Charlotte B., "LaWGS - A Description of the Langley 
+Wireframe Geometry Standard Format," NASA Technical Memorandum 85767, Feb 1985.
+

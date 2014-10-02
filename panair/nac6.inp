@@ -1,0 +1,179 @@
+$title
+simple nacelle with composite panel. (run with a502h)
+saaris  865-6150  m.s. 7k-04 ...... cowl te (90 deg.) 
+$solution 
+$symmetry - xz plane of symmetry
+=misymm   mjsymm
+1.        0.
+$mach number
+=amach
+.6
+$cases - no. of solutions
+=nacase
+2.
+$angles-of-attack
+=alpc
+0.
+=alpha(1) alpha(2)
+0.        4.
+$printout options
+=isings   igeomp    isingp    icontp    ibconp    iedgep
+.0        .0        .0        .0        .0        .0
+=ipraic   nexdgn    ioutpr    ifmcpr
+.0        .0        0.        0.
+$velocity correction
+=ivcorr
+2.
+$references for accumulated forces and moments
+=xref     yref      zref
+1.5       0.        0.
+=sref     bref      cref      dref
+20.40     6.        6.        6.
+$circular sections - nacelle inlet
+=kn 
+1.
+=kt
+9.
+=nopt                                                                 netname
+0.                                                                    inlet
+=nm
+4.
+=xs(1)    ri(1)     xs(2)     ri(2)     xs(*)     ri(*)
+2.        0.000     2.        1.328     2.        1.878
+2.        2.300
+=nn
+5.
+=th(1)    th(2)     th(3)     th(4)     th(5)
+-90.      -45.      0.        45.       90.
+=bet1(1)  bet1(2)
+# 12      1 
+-.7       -.7
+$circular sections - nacelle with composite panels
+=kn 
+2.
+=kt
+1.
+=nopt                                                                 netname
+0.                                                                    cowlu
+=nm
+20.
+=xs(1)    ri(1)     xs(2)     ri(2)     xs(*)     ri(*)
+    2.0000    2.3000    1.5756    2.3000    1.1486    2.3000
+    0.7460    2.3030    0.4069    2.3286    0.1624    2.3790
+    0.0214    2.4542   -0.0200    2.5485    0.0388    2.6522
+    0.2056    2.7554    0.4869    2.8522    0.8883    2.9413
+    1.4250    3.0178    2.1188    3.0656    2.9586    3.0658
+    3.8551    3.0175    4.6715    2.9439    5.3492    2.8700
+    6.0000    2.7842    6.4687    2.7442
+=nn
+5.
+=th(1)    th(2)     th(3)     th(4)     th(5)
+-90.      -45.      0.        45.       90.
+=nopt                                                                 netname
+0.                                                                    cowll
+=nm
+3.
+=xs(1)    ri(1)     xs(2)     ri(2)     xs(*)     ri(*)
+    6.4687    2.7442    6.0000    2.7442    5.3492    2.7442
+=nn
+5.
+=th(1)    th(2)     th(3)     th(4)     th(5)
+-90.      -45.      0.        45.       90.
+$circular sections - plume
+=kn 
+1.
+=kt
+19.
+=nopt                                                                 netname
+0.                                                                    plume
+=nm
+6.
+=xs(1)    ri(1)     xs(2)     ri(2)     xs(*)     ri(*)
+    6.4687    2.7442    6.9360    2.7000    7.4906    2.7000
+    8.2121    2.7000    9.0957    2.7000   10.0000    2.7000
+=nn
+5.
+=th(1)    th(2)     th(3)     th(4)     th(5)
+-90.      -45.      0.        45.       90.
+$circular sections - nacelle outlet
+=kn 
+1.
+=kt
+5.
+=nopt                                                                 netname
+0.                                                                    base
+=nm
+4.
+=xs(1)    ri(1)     xs(2)     ri(2)     xs(*)     ri(*)
+    5.3492    2.7442    5.3492    2.1634    5.3492    1.5296
+    5.3492    0.0000
+=nn
+5.
+=th(1)    th(2)     th(3)     th(4)     th(5)
+-90.      -45.      0.        45.       90.
+$material properties
+=nmat
+1.
+=tratio(1)pratio(1) mat-name(1)
+1.        1.3       exhaust
+=nmnet
+3.
+=netname  surface   mat-name
+cowll     upper     exhaust
+plume     lower     exhaust
+base      upper     exhaust
+$sectional properties
+=numgrp
+1.
+*network selection for sectional properties
+=numnet
+1.
+=netdat
+2.
+*cut and reference printout for sectional properties
+=optcrd   optmrp    iprtnf    iprtpp    isecpr    ixyzop
+1.        1.        0.
+=numcut
+4.
+=xc       yc        zc        xcn       ycn       zxn
+2.        0.        0.        0.        .923      .383
+=chrd     refrac
+          .25
+2.        0.        0.        0.        .383      .923
+          .25
+2.        0.        0.        0.        -.383     .923
+          .25
+2.        0.        0.        0.        -.923     .383
+          .25
+$flowfield properties
+=nflowv   tpoff
+1.        0.
+$xyz coordinates of off-body points
+=isk1
+22.
+=xof(1)   yof(1)    zof(1)    xof(*)    yof(*)    zof(*)
+1.        .799      -1.930    1.        .613      -1.481
+1.        .254      -.613     1.        1.930     -.799
+1.        1.481     -.613     1.        .613      -.254
+1.        1.930     .799      1.        1.481     .613
+1.        .613      .254      1.        .799      1.930
+1.        .613      1.481     1.        .254      .613
+11.       0.        0.        11.       0.        -2.5
+11.       0.        -2.9      9.5       0.        0.
+9.5       0.        -2.5      9.5       0.        -2.9
+5.6       0.        0.        5.6       0.        -2.3      
+5.6       0.        -3.       2.5       0.        0.        
+$streamlines in the flow field
+=nstmln
+1.
+=numpts   hmin      hmax      maxstm    maxordr   abserr
+2.        .1        .5        100.      6.        .01
+=maxarr1  isprnt    tpsl
+10000.    0.        0.        1.
+=x        y         z         dx        dy        dz
+.01       0.        -2.28     3.        2.        2.
+=fwdbk
+-1.
+.27       0.        -2.34     3.        2.        2.
+-1.
+$end of a502 inputs

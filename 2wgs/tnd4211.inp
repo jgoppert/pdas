@@ -1,0 +1,27 @@
+This series of configurations studied the characteristics of
+cranked leading edge planforms.
+A wind tunnel test case reported in NASA TN D-4211
+ 
+CRANKED WING-BODY FROM TN D-4211
+ &BODY  LNOSE=5.688, LBODY=14.216, RADIUS=0.4375,
+        NB=3, NROWS=10, XSTART=4.113,
+        SREF=21.75, CBAR=4.218, REFMOM=9.928, OC=4,
+        MACH=0.5,
+ &END
+ &WING  ROOTLE=4.113, ROOTTE=13.216, ROOTY=0.4375,
+        TIPLE=9.533, TIPTE=13.216, TIPY=1.2,
+        TCROOT=0.03, TCTIP=0.03,
+        ROWS=10, COLS=4,
+ &END
+ &WING  ROOTLE=9.533,ROOTY=1.2,
+        TIPLE=12.616, TIPY=2.98,
+ &END
+ &AERO  CASE=2,
+ &END
+ &INCR  DELTA=2,
+ &END
+... notice that we can change OC in the middle of the aero runs
+... so we don't get the full output for alpha=4 and 6
+ &INCR  OC=1,&END
+ &INCR  &END
+  

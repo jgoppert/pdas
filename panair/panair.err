@@ -1,0 +1,5 @@
+ ++ Running A502, version: i00
+ version id = ht2 (12 feb 92) boeing ver i00  
+  real length, integer length, ratio:    8   4   2
+ cannot open existing ms file with smaller index array
+ ABORT called by exitms. PanAir is stopping.

@@ -1,0 +1,36 @@
+INPUT GUIDE FOR PROGRAM HLP                                    \hlp\input.txt
+
+This program first asks for the name of the input file. This must
+be a file written to conform to the Langley Wire-Frame Geometry Standard.
+The specifications for LaWGS are contained in NASA Technical Memorandum
+85767, Feb 1985. For the purposes of this collection, the programs
+wb2wgs, wd2wgs and makewgs are the most straightforward ways of creating
+a configuration in this format. Once you catch on to the structure of
+LaWGS, you should be able to write your own programs in your favorite
+programming language that will create your networks.
+
+Next, the program asks for three viewing angles, which correspond to
+yaw, roll, and pitch. Enter values in degrees. To complete the viewing
+definition, you need to specify the distance of the eye from the object.
+Unless you are looking for an extreme perspective effect, give a
+number that is large compared to the dimensions of the object. The
+image will still be adjusted to fill the screen. If you have never
+made inputs for hlp, you probably have no idea what values to give for
+viewing angles. Some popular ones are 60,-60,-10 which shows the vehicle
+in pretty much the same viewing position as most cutaway pictures in
+magazines. Another interesting one is -45,-45,0 which shows the plane 
+flying away from you.
+
+Upon successfuly calculating the scene, the program produces a file
+called hlp.plt that defines the vectors in 2-D that describe the
+object. Each line in hlp.plt defines a point (x,y). Whenever there
+is a blank line in the file, this means that the line to the next
+point is invisible (from the old days of pen plotters, this is
+called a pen-up draw). This file may be displayed directly with
+gnuplot with the command
+
+    gnuplot> plot "hlp.plt" with lines
+
+Other plotting programs should be able to handle this data file
+without too much difficulty.
+

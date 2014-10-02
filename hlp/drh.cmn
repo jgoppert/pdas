@@ -1,0 +1,7 @@
+! File drh.cmn to be INCLUDEd in hidden line program
+      INTEGER,PARAMETER:: MAXPANELS = 100000
+      REAL work(69*MAXPANELS) 
+      INTEGER isilh(MAXPANELS)
+
+      COMMON /GO/ work 
+      COMMON/DRH/isilh
