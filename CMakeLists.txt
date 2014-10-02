@@ -19,3 +19,13 @@ add_executable(panair panair/panair.f90)
 add_executable(panin panin/panin.f90)
 
 add_executable(wgs2wrl vrml/wgs2wrl.f90)
+
+install(TARGETS a5022wgs wb2wgs wd2wgs
+	3view atmos76 panair panin wgs2wrl
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)
+
+
+set(CPACK_PACKAGE_CONTACT "james.goppert.gmail.com")
+include(CPack)
